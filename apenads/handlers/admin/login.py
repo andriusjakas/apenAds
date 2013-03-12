@@ -40,8 +40,3 @@ class AdminLoginHandler(BaseHandler):
         
         # render
         self.response.write(template.render())
-        
-        # render
-        self.response.write(template.render())
-
-
