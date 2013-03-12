@@ -6,6 +6,8 @@ import jinja2
 
 from apenads.handlers import BaseHandler
 from apenads.objects import AApplication
+from apenads.objects import AUserGroup
+from apenads.objects import AUser
 
 # template environment
 jinja_environment = jinja2.Environment(
@@ -27,3 +29,11 @@ class AdminInstallHandler(BaseHandler):
         
         template = jinja_environment.get_template('templates/install.html')
         self.response.write(template.render())
+        
+    def post(self):
+        
+        grp = AUserGroup()
+        grp.save()
+        
+        usr = AUser()
+        usr.save()
