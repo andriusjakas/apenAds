@@ -29,10 +29,19 @@ class AdminLoginHandler(BaseHandler):
     
     def post(self):
         '''
-        
+        Authenticate
         '''
         
+        if self.application().is_admin(self.request.get('username'), self.request.get('password')):
+            self.session['user'] = {'username': self.request.get('username')}
+            template = jinja_environment.get_template('templates/main.html')
+        else:
+            template = jinja_environment.get_template('templates/index.html')
         
-        self.response.write(self.request.get('username'))
-        return
+        # render
+        self.response.write(template.render())
+        
+        # render
+        self.response.write(template.render())
+
 

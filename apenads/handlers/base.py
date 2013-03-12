@@ -5,6 +5,8 @@ import webapp2
 
 from webapp2_extras import sessions
 
+from apenads.objects import AApplication
+
 class BaseHandler(webapp2.RequestHandler):
     '''
     Base handler class
@@ -32,3 +34,8 @@ class BaseHandler(webapp2.RequestHandler):
         
         # Returns a session using the default cookie key.
         return self.session_store.get_session()
+    
+    def application(self):
+        app = AApplication()
+        app.load()
+        return app
