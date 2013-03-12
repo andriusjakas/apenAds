@@ -1,13 +1,20 @@
 #!/usr/bin/env python
+'''
+Main bootstrap script
+'''
 import webapp2
 
-from apenads.admin.handlers import AdminLoginHandler
+from apenads.handlers import MainHandler
+from apenads.handlers.admin import AdminInstallHandler
+from apenads.handlers.admin import AdminLoginHandler
 
-class MainHandler(webapp2.RequestHandler):
-    def get(self):
-        self.response.write('apenAds')
+config = {}
+config['webapp2_extras.sessions'] = {
+    'secret_key': 'abb6c50753bf0eb301fa69fc0b13629a',
+}
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/admin', AdminLoginHandler),
-], debug=True)
+    ('/install', AdminInstallHandler),
+], config=config, debug=True)
