@@ -31,6 +31,15 @@ class AUser(AObject):
 
         self.data.put()
         
+    def list(self):
+        
+        items = list()
+        for item in self.data.all():
+            items.append({'id': item.user_id,
+                          'name': item.user_login})
+        
+        return items
+        
     def gen_password(self, size=12, chars=string.ascii_uppercase + string.digits):
         '''
         Generate random password

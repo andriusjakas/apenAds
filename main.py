@@ -7,6 +7,7 @@ import webapp2
 from apenads.handlers import MainHandler
 from apenads.handlers.admin import AdminInstallHandler
 from apenads.handlers.admin import AdminLoginHandler
+from apenads.handlers.admin import AdminUserHandler
 
 config = {}
 config['webapp2_extras.sessions'] = {
@@ -16,5 +17,6 @@ config['webapp2_extras.sessions'] = {
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/admin', AdminLoginHandler),
+    ('/admin/user', AdminUserHandler),
     ('/install', AdminInstallHandler),
 ], config=config, debug=True)

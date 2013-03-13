@@ -1,0 +1,6 @@
+{% extends "templates/main.html" %}
+{% block content %}
+{% for item in data %}
+{{ item.id }}: {{ item.name }}
+{% endfor %}
+{% endblock %}
