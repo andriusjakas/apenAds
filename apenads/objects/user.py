@@ -1,18 +1,18 @@
 '''
-Created on Mar 12, 2013
+User data object and class module
 
-@author: andrius
+@version: 0.1.1
 '''
-import hashlib
 import random
 import string
 
 from google.appengine.ext import db
-
+from apenads.objects.usergroup import OUserGroup
 from apenads.objects import AObject
 
 class OUser(db.Model):
     user_id = db.IntegerProperty()
+    user_group = db.ReferenceProperty(OUserGroup)
     user_login = db.StringProperty()
     user_password = db.StringProperty()
         
@@ -32,4 +32,11 @@ class AUser(AObject):
         self.data.put()
         
     def gen_password(self, size=12, chars=string.ascii_uppercase + string.digits):
-        return ''.join(random.choice(chars) for x in range(size))        
+        '''
+        Generate random password
+        
+        @param size: password length (default 12)
+        @param chars: list of character used in password
+        @return: generated password
+        '''
+        return ''.join(random.choice(chars) for x in range(size))
