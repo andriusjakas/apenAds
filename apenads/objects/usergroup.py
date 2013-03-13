@@ -11,7 +11,7 @@ class AUserGroup(AObject):
     data = None
     
     def __init__(self, group_id = 0, group_name = 'Administrators'):
-        self.data = OUserGroup()
+        self.data = OUserGroup(key_name = str(group_id))
         self.data.group_id = group_id
         self.data.group_name = group_name
 

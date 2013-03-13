@@ -1,26 +1,43 @@
 '''
-Created on Mar 12, 2013
+Application object module
 
-@version: 
+@version: 0.1.1
 '''
 
 import hashlib
+import random
+import string
 
 from google.appengine.ext import db
+
+APP_PROPERTY_ADMIN_USERNAME = 0
+APP_PROPERTY_ADMIN_PASSWORD = 1
 
 class OApplication(db.Model):
     '''
     Application object data
     '''
     
+    app_name = db.StringProperty()
+    '''
+    Appliction name
+    '''    
+    
+    app_key = db.StringProperty()
+    '''
+    
+    '''
     
     app_version = db.StringProperty()
     '''
+    Appication version
+    '''
+
+    app_valid = db.BooleanProperty()
+    '''
     
     '''
     
-    app_name = db.StringProperty()
-
     app_properties = db.StringListProperty()
     '''
     
@@ -28,27 +45,48 @@ class OApplication(db.Model):
 
 class AApplication():
     '''
-    classdocs
+    Application object
     '''
 
     constants = {'username': 'admin',
                  'password': 'admin'}
+    '''
+    Constants
+    '''
 
     version = '0.1.1'
+    '''
+    Version
+    '''
 
     data = None
+    '''
+    
+    '''
+    
+    is_installed = False
+    '''
+    
+    '''
 
     def __init__(self, name = 'apenAds'):
         '''
         Constructor
         '''
 
+        # load
+        self.load()
+
+        # Instantiate
         if self.data is None:
             self.data = OApplication(key_name = 'application', app_name = name)
+            key = hashlib.md5()
+            key.update(self.gen_key())
+            self.data.app_key = key.hexdigest()
             self.data.app_version = self.version
+            self.data.app_valid = self.is_installed
             self.data.app_properties = [self.constants.get('username'),
                                         self.constants.get('password')]
-        return
         
     def save(self):
         self.data.put()
@@ -56,7 +94,9 @@ class AApplication():
     def load(self):
         key = db.Key.from_path('OApplication', 'application')
         self.data = db.get(key)
-        return True
+    
+    def gen_key(self, size=12, chars=string.ascii_uppercase + string.digits):
+        return ''.join(random.choice(chars) for x in range(size))
     
     def is_admin(self, username, password):
         if self.data is not None:
