@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<script src="//ajax.googleapis.com/ajax/libs/dojo/1.8.3/dojo/dojo.js"
-		data-dojo-config="async: true"
-		djConfig="parseOnLoad: true, isDebug: true"></script>
-<script src="/js/main.admin.js"></script>
-<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.8.3/dijit/themes/claro/claro.css" media="screen">
-<link rel="stylesheet" href="/css/styles.admin.css" type="text/css" media="screen" />
-<title>apenAds administration</title>
-</head>
-<body class="claro">
+{% extends "templates/page.html" %}
+{% block title %}apenAds administration: inventory{% endblock %}
+
+{% block body %}
 	<div class="header">
 	</div>
 	<div class="main-page">
@@ -57,5 +48,4 @@
 	</div>
 	<div class="footer">
 	</div>
-</body>
-</html>
+{% endblock %}
