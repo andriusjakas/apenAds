@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>apenAds installer</title>
-</head>
-<body>
-	<div>
-		<h2>Application installed</h2>
-			<span>{{ app_name }}</span>
-			<span>{{ app_version }}</span>
-			<span>{{ app_key }}</span>
-	</div>
-</body>
-</html>
+{% extends "templates/page.html" %}
+{% block title %}apenAds installer{% endblock %}
+{% block body %}
+<div>
+	<h2>Application installed</h2>
+	<span>{{ app_name }}</span>
+	<span>{{ app_version }}</span>
+	<span>{{ app_key }}</span>
+	<a href="/install">Login here</a>
+</div>
+{% endblock %}
