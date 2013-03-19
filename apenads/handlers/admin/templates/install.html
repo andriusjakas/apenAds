@@ -4,15 +4,15 @@
 <script src="/js/main.admin.install.js"></script>
 {% endblock %}
 {% block body %}
-<div>
+<div class="admin-install">
 	<form method="post" action="/install">
 		<label for="app_name">Application name:</label><br />
-		<input type="text" name="app_name" value="{{ app_name }}" /><br />
+		<input id="app_name"data-dojo-type="dijit/form/TextBox" value="{{ app_name }}" /><br />
 		<label for="app_version">Application version:</label><br />
-		<input type="text" name="app_version" value="{{ app_version }}" readonly="readonly" /><br />
+		<input id="app_version" data-dojo-type="dijit/form/TextBox" value="{{ app_version }}" readonly="readonly" /><br />
 		<label for="app_version">Application key:</label><br />
-		<input type="text" name="app_key" value="{{ app_key }}" readonly="readonly" /><br />
-		<input type="submit" value="Install" />
+		<input id="app_key" data-dojo-type="dijit/form/TextBox" value="{{ app_key }}" readonly="readonly" /><br />
+		<button type="submit" data-dojo-type='dijit/form/Button'>Install</button>
 	</form>
 </div>
 {% endblock %}

@@ -1,11 +1,15 @@
-require(["dijit/Menu",
+require(["dojo/parser",
+         "dojo/ready", 
+         "dojo/domReady!",
+         "dijit/Menu",
          "dijit/MenuItem",
          "dijit/MenuBar",
          "dijit/MenuBarItem",
-         "dijit/PopupMenuBarItem",
-         "dojo/parser",
-         "dojo/domReady!"
-], function(Menu, MenuItem, MenuBar, MenuBarItem, 
-			PopupMenuBarItem, parser){
-    parser.parse();
-});
+         "dijit/PopupMenuBarItem", 
+         "dijit/form/TextBox", 
+         "dijit/form/Button"],
+     function(parser, ready){
+    	    ready(function(){
+    	        parser.parse();
+    	    });
+    	});
