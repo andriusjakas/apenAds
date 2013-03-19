@@ -1,13 +1,18 @@
 {% extends "templates/page.html" %}
 {% block title %}apenAds installer{% endblock %}
-
+{% block scripts %}
+<script src="/js/main.admin.install.js"></script>
+{% endblock %}
 {% block body %}
-	<div>
-		<form method="post" action="/install">
-			<input type="text" name="app_name" value="{{ app_name }}" />
-			<input type="text" value="{{ app_version }}" readonly="readonly" />
-			<input type="text" value="{{ app_key }}" readonly="readonly" />
-			<input type="submit" value="Install" />
-		</form>
-	</div>
+<div>
+	<form method="post" action="/install">
+		<label for="app_name">Application name:</label><br />
+		<input type="text" name="app_name" value="{{ app_name }}" /><br />
+		<label for="app_version">Application version:</label><br />
+		<input type="text" name="app_version" value="{{ app_version }}" readonly="readonly" /><br />
+		<label for="app_version">Application key:</label><br />
+		<input type="text" name="app_key" value="{{ app_key }}" readonly="readonly" /><br />
+		<input type="submit" value="Install" />
+	</form>
+</div>
 {% endblock %}
