@@ -3,6 +3,7 @@ User data object and class module
 
 @version: 0.1.1
 '''
+import hashlib
 import random
 import string
 
@@ -25,7 +26,15 @@ class AUser(AObject):
         self.data = OUser(key_name = str(user_id))
         self.data.user_id = user_id
         self.data.user_login = user_login
-        self.data.user_password = self.gen_password()
+        self.data.user_password = self.hash_passwd(self.gen_password())
+        
+    def hash_passwd(self, password):
+        '''
+        
+        '''
+        key_passwd = hashlib.md5()
+        key_passwd.update(password)
+        return key_passwd.hexdigest()
         
     def save(self):
 

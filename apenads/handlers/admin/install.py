@@ -1,5 +1,5 @@
 '''
-Admin install handler module
+Application install handler module
 
 @version: 0.1.1
 '''
@@ -54,6 +54,7 @@ class AdminInstallHandler(BaseHandler):
         grp.save()
         
         usr = AUser()
+        usr.data.user_password = usr.hash_passwd("admin")
         usr.save()
         
         template_values = {'app_name': app.data.app_name,

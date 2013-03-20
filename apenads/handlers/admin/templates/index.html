@@ -6,10 +6,12 @@
 {% block body %}
 <form method="post" action="/admin">
 	<label for="username">Username:</label>
-	<input id="username" data-dojo-type="dijit/form/TextBox" />
+	<input id="username"
+			name="username" data-dojo-type="dijit/form/TextBox" />
 	<br />
 	<label for="password">Password:</label>
-	<input id="password" data-dojo-type="dijit/form/TextBox" type="password" />
+	<input id="password" 
+			name="password" data-dojo-type="dijit/form/TextBox" type="password" />
 	<br />
 	<button type="submit" data-dojo-type='dijit/form/Button'>Login</button>
 </form>

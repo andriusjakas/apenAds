@@ -7,7 +7,9 @@
 <div class="admin-install">
 	<form method="post" action="/install">
 		<label for="app_name">Application name:</label><br />
-		<input id="app_name"data-dojo-type="dijit/form/TextBox" value="{{ app_name }}" /><br />
+		<input id="app_name"
+				name="app_name" 
+				data-dojo-type="dijit/form/TextBox" value="{{ app_name }}" /><br />
 		<label for="app_version">Application version:</label><br />
 		<input id="app_version" data-dojo-type="dijit/form/TextBox" value="{{ app_version }}" readonly="readonly" /><br />
 		<label for="app_version">Application key:</label><br />

@@ -63,11 +63,6 @@ class AApplication():
     '''
     
     '''
-    
-    is_installed = False
-    '''
-    
-    '''
 
     def __init__(self, name = 'apenAds'):
         '''
@@ -80,13 +75,19 @@ class AApplication():
         # Instantiate
         if self.data is None:
             self.data = OApplication(key_name = 'application', app_name = name)
+            
+            # gen app key
             key = hashlib.md5()
             key.update(self.gen_key())
+            
             self.data.app_key = key.hexdigest()
             self.data.app_version = self.version
-            self.data.app_valid = self.is_installed
+            
+            # gen password hash
+            key_passwd = hashlib.md5() 
+            key_passwd.update(self.constants.get('password'))
             self.data.app_properties = [self.constants.get('username'),
-                                        self.constants.get('password')]
+                                        key_passwd.hexdigest()]
         
     def save(self):
         self.data.put()
@@ -98,10 +99,12 @@ class AApplication():
     def gen_key(self, size=12, chars=string.ascii_uppercase + string.digits):
         return ''.join(random.choice(chars) for x in range(size))
     
-    def is_admin(self, username, password):
+    def is_login(self, username, password):
         if self.data is not None:
+            key_passwd = hashlib.md5()
+            key_passwd.update(password)
             if (self.data.app_properties[0] == username and 
-                self.data.app_properties[1] == password):
+                self.data.app_properties[1] == key_passwd.hexdigest()):
                 return True
             else:
                 return False 
