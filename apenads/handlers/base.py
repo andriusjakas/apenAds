@@ -14,13 +14,20 @@ class BaseHandler(webapp2.RequestHandler):
     Base handler class (to be subclassed) with session support
     '''
     
+    session_store = None
+    
+    
+    def __init__(self, request=None, response=None):
+        webapp2.RequestHandler.__init__(self, request=request, response=response)
+        # Get a session store for this request.
+        self.session_store = sessions.get_store(request=self.request)        
+    
     def dispatch(self):
         '''
         Dispatch request after session save
         '''
         
-        # Get a session store for this request.
-        self.session_store = sessions.get_store(request=self.request)
+
 
         try:
             # Dispatch the request.
@@ -33,7 +40,7 @@ class BaseHandler(webapp2.RequestHandler):
     def session(self):
         
         # Returns a session using the default cookie key.
-        return self.session_store.get_session()
+        return self.session_store.get_session(backend="memcache")
     
     def application(self):
         app = AApplication()

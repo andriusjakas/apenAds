@@ -6,13 +6,12 @@ Administrator sites module
 import os
 import jinja2
 
-from apenads.objects import AApplication
-from apenads.handlers import BaseHandler
+from apenads.handlers.admin import AdminBaseHandler
 
 jinja_environment = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
-class AdminSiteHandler(BaseHandler):
+class AdminSiteHandler(AdminBaseHandler):
     
     def get(self):
         self.response.write('list')
