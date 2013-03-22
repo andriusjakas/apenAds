@@ -26,7 +26,7 @@ class AdminLoginHandler(BaseHandler):
         app.data.app_name = self.request.get('app_name')
         
         if not app.data.app_valid:
-            self.redirect("/install")
+            self.redirect('/install')
         
         # load template
         template = jinja_environment.get_template('templates/index.html')
@@ -40,10 +40,16 @@ class AdminLoginHandler(BaseHandler):
         '''
         
         if self.application().is_login(self.request.get('username'), self.request.get('password')):
-            self.session['user'] = {'username': self.request.get('username')}
-            template = jinja_environment.get_template('templates/main.html')
+            
+            # save to sessions
+            self.session['user'] = {'username': self.request.get('username'),
+                                    'valid': True}
+            
+            # redirect
+            self.redirect('/admin/start')
+            
         else:
             template = jinja_environment.get_template('templates/index.html')
         
-        # render
-        self.response.write(template.render())
+            # render
+            self.response.write(template.render())
