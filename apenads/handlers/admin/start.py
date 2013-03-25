@@ -23,8 +23,13 @@ class AdminStartHandler(BaseHandler):
         '''
         Process GET
         '''
+        # session
+        user = self.session['user']
+      
         # main template
+        template_values = {'user': {'name': user['username']},
+                           }
         template = jinja_environment.get_template('templates/start.html')
         
         # render
-        self.response.write(template.render())
+        self.response.write(template.render(template_values))
