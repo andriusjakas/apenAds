@@ -1,10 +1,11 @@
 {% extends "templates/page.html" %}
-{% block title %}apenAds administration: inventory{% endblock %}
+{% block title %}apenAds administration{% block title_append %}{% endblock %}{% endblock %}
 {% block scripts %}
 <script src="/js/main.admin.js"></script>
 {% endblock %}
 {% block body %}
 	<div class="header">
+		({{ user.name }}) <a href="/admin/logout">Logout</a>
 {% block header %}{% endblock %}
 	</div>
 	<div class="main-page">
@@ -48,10 +49,10 @@
 			</div>			
 		</div>
 		<div class="main-content">
-		{% block content %}
-		{% endblock %}
+{% block content %}{% endblock %}
 		</div>
 	</div>
 	<div class="footer">
+{% block footer %}{% endblock %}	
 	</div>
 {% endblock %}
