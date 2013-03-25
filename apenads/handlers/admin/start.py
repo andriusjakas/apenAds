@@ -24,7 +24,7 @@ class AdminStartHandler(BaseHandler):
         Process GET
         '''
         # main template
-        template = jinja_environment.get_template('templates/main.html')
+        template = jinja_environment.get_template('templates/start.html')
         
         # render
         self.response.write(template.render())
