@@ -13,3 +13,8 @@ require(["dojo/parser",
     	        parser.parse();
     	    });
     	});
+
+function admin_menu_click(menu) {
+	window.location = "/admin/"+menu
+	return false
+} 

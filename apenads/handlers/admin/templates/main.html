@@ -5,6 +5,7 @@
 {% endblock %}
 {% block body %}
 	<div class="header">
+{% block header %}{% endblock %}
 	</div>
 	<div class="main-page">
 		<div id="main-menu"
@@ -28,7 +29,8 @@
 				<div id="main-menu-config-submenu" 
 					 data-dojo-type="dijit/Menu">
 					<div id="main-menu-config-sites"
-					 	data-dojo-type="dijit/MenuItem">Websites</div>	
+					 	data-dojo-type="dijit/MenuItem"
+					 	onClick="admin_menu_click('site')">Websites</div>	
 					<div id="main-menu-config-zones"
 					 	data-dojo-type="dijit/MenuItem">Zones</div>	
 				</div>
