@@ -5,8 +5,13 @@
 {% endblock %}
 {% block body %}
 	<div class="header">
-		({{ user.name }}) <a href="/admin/logout">Logout</a>
+		<div class="header-logo">
+			<img alt="apenAds" src="/images/logo.png" />
+		</div>
+		<div class="header-user"></div>
+			({{ user.name }}) <a href="/admin/logout">Logout</a>
 {% block header %}{% endblock %}
+		</div>
 	</div>
 	<div class="main-page">
 		<div id="main-menu"
@@ -33,7 +38,8 @@
 					 	data-dojo-type="dijit/MenuItem"
 					 	onClick="admin_menu_click('site')">Websites</div>	
 					<div id="main-menu-config-zones"
-					 	data-dojo-type="dijit/MenuItem">Zones</div>	
+					 	data-dojo-type="dijit/MenuItem"
+					 	onClick="admin_menu_click('zones')">Zones</div>	
 				</div>
 			</div>
 			<div id="main-menu-stats"
@@ -46,7 +52,18 @@
 					<div id="main-menu-stats-campaigns"
 					 	data-dojo-type="dijit/MenuItem">By campaign</div>	
 				</div>
-			</div>			
+			</div>	
+			<div id="main-menu-help"
+				 data-dojo-type="dijit/PopupMenuBarItem">
+				<span>Help</span>
+				<div id="main-menu-help-submenu" 
+					 data-dojo-type="dijit/Menu">
+					<div id="main-menu-help-help"
+					 	data-dojo-type="dijit/MenuItem">Help</div>	
+					<div id="main-menu-help-about"
+					 	data-dojo-type="dijit/MenuItem">About</div>	
+				</div>
+			</div>	
 		</div>
 		<div class="main-content">
 {% block content %}{% endblock %}

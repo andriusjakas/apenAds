@@ -22,3 +22,21 @@ div.admin-install {
 div.admin-install label {
 	margin-top: 15px;
 }
+
+div.header {
+	width: 100%;
+	overflow: auto;
+}
+
+div.header div.header-logo {
+	width: 180px;
+	height: 60px;
+	float: left;
+}
+
+div.header div.header-user {
+	width: 380px;
+	height: 60px;
+	float: right;
+	vertical-align: bottom;	
+}
