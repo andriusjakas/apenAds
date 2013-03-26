@@ -5,8 +5,13 @@
 {% endblock %}
 {% block body %}
 	<div class="header">
-		({{ user.name }}) <a href="/admin/logout">Logout</a>
+		<div class="header-logo">
+			<img alt="apenAds" src="/images/logo.png" />
+		</div>
+		<div class="header-user"></div>
+			({{ user.name }}) <a href="/admin/logout">Logout</a>
 {% block header %}{% endblock %}
+		</div>
 	</div>
 	<div class="main-page">
 		<div id="main-menu"
